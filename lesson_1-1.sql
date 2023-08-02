@@ -4,13 +4,13 @@ USE `Testing_System_Assignment_1`;
 
 DROP TABLE IF EXISTS `table_Department`;
 CREATE TABLE `table_Department` (
-    DepartmentID INT,
-    DepartmentIDName VARCHAR(50)
+    DepartmentID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY ,
+    DepartmentIDName VARCHAR(50) NOT NULL
 );
 
 DROP TABLE IF EXISTS  `table_Position`;
 CREATE TABLE `table_Position` (
-    PositionID INT,
+    PositionID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     PositionName VARCHAR(20)
 );
 
