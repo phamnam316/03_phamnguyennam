@@ -81,7 +81,7 @@ CREATE TABLE `table_Exam` (
     CreatorID INT,
     CreateDate DATE
 );  
-
+ 
 Drop Table if exists `table_ExamQuestion`;
 CREATE TABLE `table_ExamQuestion` (
     ExamID INT,
