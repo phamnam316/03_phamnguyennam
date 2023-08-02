@@ -28,7 +28,7 @@ CREATE TABLE `Data_Type` (
     ExerciseID INT UNSIGNED AUTO_INCREMENT,
     ExerciseName VARCHAR(50) NOT NULL,
     ExerciseCode CHAR(5) NOT NULL,
-    ModifiedDate DATETIME DEFAULT NOW(),
+    ModifiedDate DATETIME DEFAULT NOW (),
     PRIMARY KEY (ExerciseID)
 );		
 
