@@ -28,7 +28,7 @@ CREATE TABLE `Data_Type` (
     ExerciseID INT UNSIGNED AUTO_INCREMENT,
     ExerciseName VARCHAR(50) NOT NULL,
     ExerciseCode CHAR(5) NOT NULL,
-    ModifiedDate DATETIME DEFAULT NOW(),
+    ModifiedDate DATETIME DEFAULT NOW (),
     PRIMARY KEY (ExerciseID)
 );		
 
@@ -43,6 +43,9 @@ CREATE TABLE `Data_Type_2` (
     IsDeletedFlag ENUM('0', '1') NOT NULL,
     PRIMARY KEY (ExerciseID)
 );
+
+-- Assignment 3
+-- Question 1:
 INSERT INTO Table_Trainee (TraineeID, Full_Name, Birth_Date, Gender, ET_IQ, ET_Gmath, ET_English, Training_Class, Evaluation_Notes, VTI_Account)
 VALUES (1, N'Hồ Văn An', '1995-05-10', 'male', 18, 16, 45, 'C101', N'Có tiềm năng, cần cải thiện về tiếng Anh.', 'R001'),
     (2, N'Nguyễn Thị Bình', '1997-02-20', 'female', 20, 18, 50, 'C102', N'Thành tích xuất sắc ở tất cả các lĩnh vực.', 'R002'),
@@ -56,3 +59,33 @@ VALUES (1, N'Hồ Văn An', '1995-05-10', 'male', 18, 16, 45, 'C101', N'Có ti�
     (10, N'Lê Thị Hương', '1996-10-30', 'female', 15, 14, 38, 'C103', N'Trình độ dưới trung bình, cần tập trung vào tất cả các lĩnh vực.', 'R010');
 SELECT * FROM `Table_Trainee`;	
 DELETE  FROM `Table_Trainee` WHERE TraineeID >= 1 AND TraineeID <= 10;			
+
+-- Question 2:
+SELECT MONTH(Birth_Date), COUNT(TraineeID)
+FROM `Table_Trainee`
+WHERE ET_IQ + ET_Gmath>=20 AND
+ET_IQ>=8 AND
+ET_Gmath>=8 AND
+ET_English>=18
+GROUP BY month(Birth_Date);
+
+-- Question 3:
+SELECT * 
+FROM `Table_Trainee`
+WHERE length(Full_Name) = (SELECT MAX(length(Full_Name)) FROM `Table_Trainee`);
+
+-- Question 4:
+SELECT TraineeID
+FROM `Table_Trainee`
+WHERE ET_IQ + ET_Gmath>=20 AND
+ET_IQ>=8 AND
+ET_Gmath>=8 AND
+ET_English>=18;
+
+-- Question 5:
+DELETE FROM `Table_Trainee` WHERE TraineeID ="3";
+
+-- Question 6:
+UPDATE `Table_Trainee`
+SET Training_Class = "2"
+WHERE TraineeID ="5";
