@@ -61,13 +61,13 @@ SELECT * FROM `Table_Trainee`;
 DELETE  FROM `Table_Trainee` WHERE TraineeID >= 1 AND TraineeID <= 10;			
 
 -- Question 2:
-SELECT MONTH(Birth_Date), COUNT(TraineeID)
+SELECT MONTH(Birth_Date), GROUP_CONCAT(Full_Name)
 FROM `Table_Trainee`
 WHERE ET_IQ + ET_Gmath>=20 AND
 ET_IQ>=8 AND
 ET_Gmath>=8 AND
 ET_English>=18
-GROUP BY month(Birth_Date);
+GROUP BY MONTH(Birth_Date);
 
 -- Question 3:
 SELECT * 
@@ -75,7 +75,7 @@ FROM `Table_Trainee`
 WHERE length(Full_Name) = (SELECT MAX(length(Full_Name)) FROM `Table_Trainee`);
 
 -- Question 4:
-SELECT TraineeID
+SELECT *
 FROM `Table_Trainee`
 WHERE ET_IQ + ET_Gmath>=20 AND
 ET_IQ>=8 AND
@@ -86,6 +86,9 @@ ET_English>=18;
 DELETE FROM `Table_Trainee` WHERE TraineeID ="3";
 
 -- Question 6:
-UPDATE `Table_Trainee`
-SET Training_Class = "2"
-WHERE TraineeID ="5";
+UPDATE `Table_Trainee` 
+SET 
+    Training_Class = '2'
+WHERE
+    TraineeID = '5'
+
