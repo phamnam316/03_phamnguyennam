@@ -87,3 +87,57 @@ CREATE TABLE `table_ExamQuestion` (
     ExamID INT NOT NULL,
     QuestionID TINYINT NOT NULL
 );
+
+
+-- Question 1: Tạo view có chứa danh sách nhân viên thuộc phòng ban sale
+CREATE VIEW `view_SaleEmployees` AS
+    SELECT 
+        A.FullName, D.DepartmentIDName
+    FROM
+        `table_Account` A
+            JOIN
+        `table_Department` D ON A.DepartmentID = D.DepartmentID
+    WHERE
+        D.DepartmentIDName = 'sale'ion 2: Tạo view có chứa thông tin các account tham gia vào nhiều group nhất
+CREATE VIEW `view_MostGroupMembers` AS
+SELECT A.AccountID, A.FullName, COUNT(GA.GroupID) AS NumGroups
+FROM `table_Account` A
+JOIN `table_GroupAccount` GA ON A.AccountID = GA.AccountID
+GROUP BY A.AccountID
+ORDER BY NumGroups DESC
+LIMIT 1;
+
+-- Question 3: Tạo view có chứa câu hỏi có content quá dài và xóa nó đi
+
+-- Tạo view
+CREATE VIEW `view_LongQuestions` AS
+SELECT * FROM `table_Question`
+WHERE LENGTH(Content) > 300;
+
+-- Xóa các câu hỏi quá dài
+DELETE FROM `table_Question`
+WHERE QuestionID IN (SELECT QuestionID FROM `view_LongQuestions`);
+
+-- Question 4: Tạo view có chứa danh sách các phòng ban có nhiều nhân viên nhất
+
+CREATE VIEW `view_DepartmentMostEmployees` AS
+SELECT D.DepartmentIDName, COUNT(A.AccountID) AS NumEmployees
+FROM `table_Account` A
+JOIN `table_Department` D ON A.DepartmentID = D.DepartmentID
+GROUP BY D.DepartmentID
+ORDER BY NumEmployees DESC;
+
+
+-- Question 5: Tạo view có chứa tất cả các câu hỏi do user họ Nguyễn tạo
+
+CREATE VIEW `view_QuestionsByNguyen` AS
+SELECT Q.*
+FROM `table_Question` Q
+JOIN `table_Account` A ON Q.CreatorID = A.AccountID
+WHERE A.FullName LIKE 'Nguyen%';
+
+
+
+
+
+
