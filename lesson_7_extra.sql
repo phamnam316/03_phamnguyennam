@@ -32,4 +32,4 @@ VALUES
 
 INSERT INTO Project_Modules (ProjectID, EmployeeID, ProjectModulesDate, ProjectModulesCompletedOn, ProjectModulesDescription)
 VALUES
-    (10, 1, '2023-07-07', '2023-09-09', 'Description of Module 1 for Project X');
+    (10, 1, '2023-07-07', '2023-06-06', 'Description of Module 1 for Project X');

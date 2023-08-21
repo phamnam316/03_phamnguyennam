@@ -90,5 +90,6 @@ UPDATE `Table_Trainee`
 SET 
     Training_Class = '2'
 WHERE
-    TraineeID = '5'
+    TraineeID = '5';
+
 

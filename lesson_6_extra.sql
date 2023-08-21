@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS `Projects`;
 CREATE DATABASE `Projects`;
 USE `Projects`;
 
-
+	
 -- Create Projects table
 CREATE TABLE `Projects` (
     ProjectID TINYINT AUTO_INCREMENT PRIMARY KEY,
@@ -162,7 +162,6 @@ DETERMINISTIC
 NO SQL
 BEGIN
     DECLARE result BOOLEAN;
-
     SELECT 
         COUNT(*) INTO result
     FROM
@@ -170,7 +169,6 @@ BEGIN
     WHERE
         E.EmployeeID = p_EmployeeID
         AND E.EmployeeID NOT IN (SELECT DISTINCT EmployeeID FROM Work_Done);
-
     RETURN result;
 END;
 //
