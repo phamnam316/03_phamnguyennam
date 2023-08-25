@@ -1,11 +1,12 @@
 package org.example.TestingSystem_Assignment_1;
-import java.util.Date;
+import java.time.LocalDate;
 public class Account {
     int accountId;
-    String email;
+    java.lang.String email;
     String userName;
     String fullName;
     int departmentId;
     int positionId;
-    Date createDate;
+    LocalDate createDate;
+    Group group[];
 }
